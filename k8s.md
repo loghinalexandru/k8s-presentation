@@ -90,7 +90,7 @@ What do you do when you need to handle load?
 
 #### Option 1:
 
-Scale vertically. This means adding more RAM/CPU to the pod.
+Scale vertically. This means adding more available RAM/CPU to the pod.
 
 #### Option 2:
 Scale horizontally. This means adding more instances of the same service and load balancing between them.
@@ -119,7 +119,13 @@ The underling container engine can be of any kind as long as it implements the *
 ---
 ### DNS
 
-# TODO: ADD
+Every cluster needs one.
+
+- Pods & Services have DNS entries
+- It is scoped per namespace
+- Queries are usually expanded via ```/etc/resolv.conf```
+- Can be changed in any shape or form you imagine
+eg. {service-name}.{namespace}.{svc|pod}.{cluster-domain}
 
 ---
 #### Examples
@@ -179,7 +185,7 @@ spec:
 ----
 #### Kubeconfig
 
-- Manages access to kubernetes cluster (plural)
+- Manages access to kubernetes clusters (plural)
 - Usually you can find it in ~/.kube/config
 - One file by default
 
@@ -230,7 +236,7 @@ users:
 - Interacts with kubernetes
 - Provides a ".Values" variable
 - Hub for sharing charts [artifacthub.io](https://artifacthub.io/)
-- CLI tool nothing more nothing less
+- CLI tool, nothing more nothing less
 
 ---
 ### More Details
@@ -248,9 +254,14 @@ kleilobby    	default  	2       	2023-02-14 15:23:26.310650121 +0000 UTC	deploye
 ```
 ---
 
-### Resources
+### Links
 
-TODO: ADD
+- [Helm Docs](https://helm.sh/docs/helm/)
+- [Kubernetes Docs](https://kubernetes.io/docs/home/)
+- [Kubectl Docs](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands)
+- [Go template package](https://pkg.go.dev/text/template)
+- [Recommended labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/)
+- [Well-Known Labels, Annotations and Taints](https://kubernetes.io/docs/reference/labels-annotations-taints/)
 
 ---
 
