@@ -47,6 +47,7 @@ I highly encourage to dig deeper after this presentation by checking the officia
 # What is kubernetes?
 
 ##### Keywords:
+
 - **Automating deployments**
 - **Scaling**
 - **Containerized applications**
@@ -57,6 +58,7 @@ I highly encourage to dig deeper after this presentation by checking the officia
 <div>
 
 #### High Level:
+
 - Control Plane
 - Node/Agent
 - Controllers
@@ -66,6 +68,7 @@ I highly encourage to dig deeper after this presentation by checking the officia
 <div>
 
 #### Low Level:
+
 - Orchestration(API,Manager...)
 - Kubelet
 - Kube Proxy
@@ -79,35 +82,44 @@ I highly encourage to dig deeper after this presentation by checking the officia
 This can be easiley done via the Kubernetes Objects.
 
 Options:
+
 - Pod
 - Deployment
 - Daemon Set
 - Stateful Set
 
 ---
-## Scaling
+
+### Scaling
+
 What do you do when you need to handle load?
 
-#### Option 1:
+#### Option 1
 
 Scale vertically. This means adding more available RAM/CPU to the pod.
 
-#### Option 2:
+#### Option 2
+
 Scale horizontally. This means adding more instances of the same service and load balancing between them.
 
---- 
-## Scaling
+---
+
+### Solution
 
 In Kubernetes we can do both.
 
-Option 1:
+#### Vertically
+
 - Requests & Limits
 
-Option 2:
+#### Horizontally
+
 - Replicas & Services
 
 ---
-## Containerized applications
+
+### Containerized applications
+
 I hope you are familiar with Docker or better said containerd.
 
 Why you ask?
@@ -117,6 +129,7 @@ Each pod in kubernetes runs one or more **container images**.
 The underling container engine can be of any kind as long as it implements the **Container Runtime Interface** (CRI).
 
 ---
+
 ### DNS
 
 Every cluster needs one.
@@ -128,7 +141,8 @@ Every cluster needs one.
 eg. {service-name}.{namespace}.{svc|pod}.{cluster-domain}
 
 ---
-#### Examples
+
+#### Deployment
 
 ```yaml
 apiVersion: apps/v1
@@ -144,8 +158,10 @@ spec:
         ports:
         - containerPort: 80
 ```
+
 ---
-#### Examples
+
+#### Service
 
 ```yaml
 apiVersion: v1
@@ -162,8 +178,10 @@ spec:
       port: 80
       targetPort: 9376
 ```
+
 ---
-#### Examples
+
+#### Ingress
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -182,23 +200,31 @@ spec:
             port:
               number: 80
 ```
-----
+
+---
+
 #### Kubeconfig
 
 - Manages access to kubernetes clusters (plural)
 - Usually you can find it in ~/.kube/config
 - One file by default
 
-**Azure**
+#### Azure
+
 ```bash
 $ az aks get-credentials --resource-group myResourceGroup --name myAKSCluste
 ```
-**K3s**
+
+##### K3s
+
 ```bash
 $ export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 ```
---- 
+
+---
+
 ### Example
+
 ```yaml
 apiVersion: v1
 clusters:
@@ -221,6 +247,7 @@ users:
     client-certificate-data: {secret}
     client-key-data: {secret}
 ```
+
 ---
 <!-- _class: lead -->
 ![bg vertical left:40% 30%](https://cncf-branding.netlify.app/img/projects/helm/horizontal/color/helm-horizontal-color.svg)
@@ -228,6 +255,7 @@ users:
 > ### The package manager for Kubernetes.
 
 ---
+
 ### Package Manager?
 
 - More like a templating engine with added stuff
@@ -239,6 +267,7 @@ users:
 - CLI tool, nothing more nothing less
 
 ---
+
 ### More Details
 
 - A deployable unit in helm is called a "Chart"
@@ -252,6 +281,7 @@ NAME         	NAMESPACE	REVISION	UPDATED                                	STATUS 
 homestack-dns	default  	1       	2023-02-16 17:11:27.513353937 +0000 UTC	deployed	coredns-0.1.0   	1.0.0      
 kleilobby    	default  	2       	2023-02-14 15:23:26.310650121 +0000 UTC	deployed	klei-lobby-0.1.0	1.0.0 
 ```
+
 ---
 
 ### Links
