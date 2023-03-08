@@ -212,13 +212,13 @@ spec:
 #### Azure
 
 ```bash
-$ az aks get-credentials --resource-group myResourceGroup --name myAKSCluste
+az aks get-credentials --resource-group myResourceGroup --name myAKSCluste
 ```
 
 ##### K3s
 
 ```bash
-$ export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
+export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 ```
 
 ---
