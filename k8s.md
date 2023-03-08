@@ -229,7 +229,7 @@ $ export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 apiVersion: v1
 clusters:
 - cluster:
-    certificate-authority-data: {secret}
+    certificate-authority-data: DATA+OMITTED
     server: https://192.168.1.12:6443
   name: homestack
 contexts:
@@ -244,8 +244,8 @@ preferences: {}
 users:
 - name: default
   user:
-    client-certificate-data: {secret}
-    client-key-data: {secret}
+    client-certificate-data: DATA+OMITTED
+    client-key-data: DATA+OMITTED
 ```
 
 ---
@@ -292,6 +292,7 @@ kleilobby    	default  	2       	2023-02-14 15:23:26.310650121 +0000 UTC	deploye
 - [Go template package](https://pkg.go.dev/text/template)
 - [Recommended labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/)
 - [Well-Known Labels, Annotations and Taints](https://kubernetes.io/docs/reference/labels-annotations-taints/)
+- [QoS for Pods](https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/#create-a-pod-that-gets-assigned-a-qos-class-of-burstable)
 
 ---
 
