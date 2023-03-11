@@ -61,8 +61,8 @@ I highly encourage to dig deeper after this presentation by checking the officia
 
 - Control Plane
 - Node/Agent
-- Controllers
-- Operator Pattern
+- Controller/Operator
+- API Resources
 
 </div>
 <div>
@@ -226,7 +226,7 @@ export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 ### Example
 
 ```yaml
-apiVersion: v1
+...
 clusters:
 - cluster:
     certificate-authority-data: DATA+OMITTED
@@ -239,13 +239,7 @@ contexts:
     user: default
   name: homestack
 current-context: homestack
-kind: Config
-preferences: {}
-users:
-- name: default
-  user:
-    client-certificate-data: DATA+OMITTED
-    client-key-data: DATA+OMITTED
+...
 ```
 
 ---
@@ -271,10 +265,10 @@ users:
 ### More Details
 
 - A deployable unit in helm is called a "Chart"
-- Written in GO with the ```text/template``` package
+- Written in Go with the ```text/template``` package
 - A release is a deployed chart on k8s
 - Can upgrade/install/rollback releases
-- It supports also repositories
+- It supports also repositories of charts
 
 ```bash
 NAME         	NAMESPACE	REVISION	UPDATED                                	STATUS  	CHART           	APP VERSION

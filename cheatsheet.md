@@ -1,14 +1,21 @@
 # Kubernetes
 
-## Useful arguments. Applies to all commands
+## Useful arguments. Applies to all CRUD commands
 
 - ```-n or --namespace``` specify a different namespace other than the default one
 - ```-A or --all-namespaces``` runs the command on all namespaces
 
+### Manage Manifest
+
+```zsh
+kubectl apply -f {manifest.yaml}
+kubectl delete -f {manifest.yaml}
+```
+
 ### Help
 
 ```zsh
-kubectl {command} help
+kubectl {command} --help
 ```
 
 ### API Resources
@@ -39,7 +46,6 @@ kubectl delete ns {ns-name}
 ### Metrics Server
 
 ```zsh
-kubectl top po
 kubectl top po --containers
 ```
 
@@ -53,6 +59,12 @@ kubectl logs {pod-name} -c {container-name}
 
 ```zsh
 kubectl describe {api-resource} {object-id} -n {namespace}
+```
+
+### Get API Object Manifest
+
+```zsh
+kubectl get {api-resource} {object-id} -o yaml
 ```
 
 ### Shell Into Container
